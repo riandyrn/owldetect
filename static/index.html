@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OwlDetect</title>
+</head>
+<body>
+    <br><br>
+    <div style="text-align: center;">
+        <textarea name="inputText" id="inputText" cols="30" rows="20">Hello World! I'm a cat!</textarea>
+        <textarea name="refText" id="refText" cols="30" rows="20">Welcome to my world! Hello World! I'm a cat! But I eat pizza!</textarea>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <button onclick="analyzeText()">Analyze</button>
+    </div>
+
+    <script>
+        async function analyzeText() {
+            const inputText = document.getElementById("inputText");
+            const refText = document.getElementById("refText");
+
+            const response = await fetch("/analysis", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "input_text": inputText.value,
+                    "ref_text": refText.value,
+                })
+            });
+
+            const apiResp = await response.json();
+            if (apiResp.data.matches) {
+                alert("plagiarism found!");
+            } else {
+                alert("no plagiarism");
+            }
+        }
+    </script>
+</body>
+</html>
