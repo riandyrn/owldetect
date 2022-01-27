@@ -1,18 +1,20 @@
 # OwlDetect
 
-`OwlDetect` is a startup that want to fight plagiarism in education sector.
+Welcome to Haraj take home challenge!
 
-They want to create a web app that can be used by highschool teachers to check plagiarism in their students homework.
+In this challenge you will be assigned to help fictional startup called `OwlDetect` to create their first product. 
 
-Plagiarism in highschool is mostly not complicated, usually what they do is fall into one of following category:
+`OwlDetect` is a startup that want to fight plagiarism in education sector. They want to create a web app that can be used by highschool teachers to check plagiarism in their students homework.
 
-1. They will copy the exact phrases from others homework
-2. They will copy then alter some words in the copied phrases
-3. They will copy only some phrases
+Plagiarism in highschool is mostly not complicated, usually they fall into one of following category:
 
-In this repo you will find prototype for their web app. However it is not yet working as they expected because it could only check for the exact match text. So if its differ even if only a bit, it would not categorized as plagiarism. 
+1. Students copy the exact phrases from other students homework
+2. Students copy then alter some words in the copied phrases
+3. Students copy only some phrases while also adding their own phrases
 
-You could see the live version of this web app [here](https://dry-woodland-18779.herokuapp.com/).
+In this repo you will find prototype for `OwlDetect` web app. However currently it is not yet working as they expected because it could only check for the exact match text.
+
+You could see the live version for this app [here](https://dry-woodland-18779.herokuapp.com/).
 
 You could check how the web app should function by reading [http_api.md](./http_api.md).
 
