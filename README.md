@@ -39,6 +39,12 @@ We will evaluate your submission based on:
 4. Submit the link of your fork, deployment URL, CV, & cover letter to [this page](https://stackoverflow.com/jobs/558729?so_medium=Talent&so_source=Talent).
 5. In your cover letter, share with us what changes you have made and what further changes you would prioritize if you had more time.
 
+## Deadline
+
+There is no exact deadline date for this project. The only deadline is when the vacancy has been closed. We plan to open it until `2022-03-15`.
+
+So feel free to take your time to make the best submission.
+
 ## Questions
 
 Got any questions? Feel free to open [issues](https://github.com/riandyrn/owldetect/issues).
