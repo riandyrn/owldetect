@@ -43,7 +43,13 @@ We will evaluate your submission based on:
 
 There is no exact deadline date for this project. The only deadline is when the vacancy has been closed. We plan to open it until `2022-03-15`.
 
-So feel free to take your time to make the best submission.
+So feel free to take your time!
+
+> **Note:**
+>
+> Just fyi, this submission make up to `50%` from your overall hiring score. While your CV only make up to `5%`.
+>
+> So do your best to create great submission! 😁
 
 ## Questions
 
