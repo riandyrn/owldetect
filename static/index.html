@@ -5,16 +5,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OwlDetect</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .container{
+            width: 90%;
+            margin: 0 auto;
+        }
+        .flex{
+            display: flex;
+            justify-content: space-between;
+        }
+        textarea{
+            width: 50%;
+            height: 500px;
+            margin: 10px;
+        }
+        .flexResult{
+            flex: 1;
+            margin: 10px;
+            border-right: 1px solid black;
+        }
+        .notif{
+            padding: 20px;
+            font-size: 25px;
+            background-color: yellow;
+            animation: notification 1s ease forwards;
+            position: absolute;
+            left: 45%;
+        }
+        @keyframes notification {
+            from{
+                top: 0px;
+                opacity: 0;
+            }
+            to{
+                top: 50px;
+                opacity: 1;
+            }
+        }
+        button{
+            font-size: 16px;
+            padding: 12px;
+            background-color: yellow;
+            border: none;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <br><br>
-    <div style="text-align: center;">
-        <textarea name="inputText" id="inputText" cols="30" rows="20">Hello World! I'm a cat!</textarea>
-        <textarea name="refText" id="refText" cols="30" rows="20">Welcome to my world! Hello World! I'm a cat! But I eat pizza!</textarea>
-    </div>
-    <br>
-    <div style="text-align: center;">
-        <button onclick="analyzeText()">Analyze</button>
+    <div class="container">
+        <div class="flex" id="result">
+            <div class="flexResult">
+                <h3>Input</h3>
+                <div id="resultIn"></div>
+            </div>
+            <div class="flexResult">
+                <h3>Reference</h3>
+                <div id="resultRef"></div>
+            </div>
+        </div>
+        <div class="flex">
+            <textarea name="inputText" id="inputText">Hello World! I'm a cat!</textarea>
+            <textarea name="refText" id="refText">Welcome to my world! Hello World! I'm a cat! But I eat pizza!</textarea>
+        </div>
+        <br>
+        <div style="text-align: center;">
+            <button onclick="analyzeText()">Analyze</button>
+            <button onclick="resetText()">Reset</button>
+        </div>
     </div>
 
     <script>
@@ -33,12 +94,65 @@
                 })
             });
 
-            const apiResp = await response.json();
+            const apiResp = await response.json();         
+
             if (apiResp.data.matches) {
-                alert("plagiarism found!");
+                notif("plagiarism found!");
+                resultData(apiResp);
             } else {
-                alert("no plagiarism");
+                notif("no plagiarism");
             }
+        }
+
+        function resultData(apiResp) {
+            let dataMatch = []
+            apiResp.data.matches.forEach(data => {
+                return dataMatch = data;
+            });
+            resultText(dataMatch);
+        }
+        
+        function resultText(txt) {
+            let inputValue = inputText.value;
+            let getInput = txt.input.text;
+            let inIndexOf = inputValue.indexOf(getInput);
+            let inStart = inputValue.substring(0, inIndexOf);
+            let inEnd = inputValue.substring(inIndexOf + getInput.length);
+
+            let refValue = refText.value;
+            let getRef = txt.ref.text;
+            let refIndexOf = refValue.indexOf(getRef);
+            let refStart = refValue.substring(0, refIndexOf);
+            let refEnd = refValue.substring(refIndexOf + getRef.length);
+
+            const displayIn = document.getElementById("resultIn");
+            displayIn.innerHTML = `${inStart} <span style = "background-color:rgb(255, 255, 0);"> ${getInput} </span> ${inEnd} `;
+
+            const displayRef = document.getElementById("resultRef");
+            displayRef.innerHTML = `${refStart} <span style = "background-color:rgb(255, 255, 0);"> ${getRef} </span> ${refEnd}`;
+
+        }
+
+        function notif(msg) {
+            const notif = document.createElement("div");
+            notif.classList.add("notif");
+            document.body.prepend(notif);
+            const txtNotif = document.createTextNode(msg);
+            notif.appendChild(txtNotif)
+
+            setTimeout(() => {
+                notif.remove();
+            }, 1500)
+        }
+
+        function resetText(){
+            inputText.value = "";
+            refText.value = "";
+            
+            const displayIn = document.getElementById("resultIn");
+            displayIn.innerHTML = "";
+            const displayRef = document.getElementById("resultRef");
+            displayRef.innerHTML = "";
         }
     </script>
 </body>
