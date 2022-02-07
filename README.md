@@ -1,6 +1,6 @@
 # OwlDetect DEMO
 
-You could see the finish submission for this app [here](https://owl-detect-haraj.herokuapp.com/).
+You could see the finish challange for this app [here](https://owl-detect-haraj.herokuapp.com/).
 
 ## The Improvment
 
